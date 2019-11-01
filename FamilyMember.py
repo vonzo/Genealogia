@@ -5,7 +5,7 @@ Created on Sat Jul 20 21:24:42 2019
 
 @author: ivanarevalo
 """
-import time
+
 from datetime import date
 
 class FamilyMember():
@@ -26,23 +26,21 @@ class FamilyMember():
         
     def setParent(self, parent):
         if not isinstance(parent, FamilyMember):
-            raise TypeError("father must be set to a FamilyMember")
+            raise TypeError("Parent must be set to a FamilyMember")
         if parent in self.parents:
             print("parent already in the list")
             return
-        self.parents.append(parent) 
         parent.setChild(self)
         
         
     def setChild(self, child):
-        
         if not isinstance(child, FamilyMember):
             raise TypeError("child must be set to a FamilyMember")
         if child in self.children:
             print("child already in the list")
             return
         self.children.append(child) 
-        child.setParent(self)
+        child.parents.append(self)
         
         
     def age(self):
